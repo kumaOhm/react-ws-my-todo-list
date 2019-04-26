@@ -1,23 +1,18 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-class List extends React.Component {
-
-    render() {
-        const listItems = this.props.list.map((item) => {
-            return (
-                <ListItem 
-                    key={item.index} 
-                    item={item} 
-                    onToggleListItem={this.props.onToggleListItem}
-                    onEditTask={this.props.onEditTask}
-                    onDeleteTask={this.props.onDeleteTask} />
-            );
-        });
+const List = ( { list , onToggleListItem , onEditTask , onDeleteTask } ) => {
+    const listItem = list.map((item)=>{
         return (
-                <ul className="App-ul">{listItems}</ul>
+            <ListItem 
+                key={item.id} 
+                item={item} 
+                onToggleListItem={onToggleListItem}
+                onEditTask={onEditTask}
+                onDeleteTask={onDeleteTask} />
         );
-    }
-}
+    });
+    return listItem;
+};
 
 export default List;
